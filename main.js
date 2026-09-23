@@ -1337,10 +1337,7 @@ function deleteDownload(levelIdRaw) {
 
 Menu.setApplicationMenu(null);
 
-const WEBROOT = path.join(
-	process.resourcesPath,
-	"webroot",
-);
+const WEBROOT = path.join(process.resourcesPath, "webroot");
 app.userAgentFallback = `${app.userAgentFallback} HappyWheels/1.99.1 (2.01; 908184ed)`;
 
 const INDEX_HTML = [
