@@ -1,1 +1,8 @@
-node_modules/
+node_modules/*
+!node_modules/electron/
+node_modules/electron/*
+!node_modules/electron/dist/
+node_modules/electron/dist/*
+!node_modules/electron/dist/resources/
+node_modules/electron/dist/resources/*
+!node_modules/electron/dist/resources/webroot/

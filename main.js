@@ -4,11 +4,11 @@ const electron = require("electron");
 const path = require("node:path");
 const fs = require("node:fs");
 const url = require("node:url");
-const net = require("node:net");
+const nodeNet = require("node:net");
 const crypto = require("node:crypto");
 const steamworks = require("steamworks.js");
 
-const { app, BrowserWindow, Menu, ipcMain, protocol, session, shell } =
+const { app, BrowserWindow, Menu, ipcMain, protocol, session, shell, net } =
 	electron;
 
 app.setName("Happy Wheels");
@@ -772,7 +772,7 @@ function connectDiscord() {
 		const socketPath = candidates[index++];
 		if (socketPath === undefined) return void scheduleDiscordReconnect();
 
-		const socket = net.connect(socketPath);
+		const socket = nodeNet.connect(socketPath);
 		const onError = () => {
 			socket.destroy();
 			tryNext();
@@ -1337,7 +1337,10 @@ function deleteDownload(levelIdRaw) {
 
 Menu.setApplicationMenu(null);
 
-const WEBROOT = path.join(process.resourcesPath, "webroot");
+const WEBROOT = path.join(
+	process.resourcesPath,
+	"webroot",
+);
 app.userAgentFallback = `${app.userAgentFallback} HappyWheels/1.99.1 (2.01; 908184ed)`;
 
 const INDEX_HTML = [
